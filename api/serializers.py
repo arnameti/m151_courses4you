@@ -1,33 +1,53 @@
 from rest_framework import serializers
-from api.models import Anschrift, Anbieter, Kursleiter, Kursteilnehmer, Kurs
+from api.models import Place, Provider, Teacher, Student, Course
+from django.contrib.auth.models import User
 
-class AnschriftSerializer(serializers.ModelSerializer):
+# Hier werden alle Serializers erstellt. Dazu müssen die Models (also die Klassen), die in der Datei models.py erstellt wurden, importiert werden.
+# D.h hier werden die Klassen erstellt, die die Serialisierung und Desirialisierung vornehmen.
+class PlaceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Anschrift
-        fields = ['plz','ortsname']
+        model = Place
+        fields = '__all__'
 
-class AnbieterSerializer(serializers.ModelSerializer):
+# Mit depth = 1 wird eine Ebene tiefer gegangen. D.h in diesem Fall ist beim Aufruf des Prividers, auch die Anschrift ersichtlich.
+class ProviderSerializer(serializers.ModelSerializer):
+    place_pk = serializers.PrimaryKeyRelatedField(queryset=Place.objects.all(), source='place_fk', write_only=True, label='Place')
     class Meta:
-        model = Anbieter
-        fields =('name')
+        model = Provider
+        fields = '__all__'
         depth = 1
 
-class KursleiterSerializer(serializers.ModelSerializer):
+# Der Serializer für die Klasse Teacher.
+class TeacherSerializer(serializers.ModelSerializer):
     class Meta:
-        model: Kursleiter
-        fields = ['first_name', 'last_name', 'email']
+        model = Teacher
+        fields = '__all__'
         depth = 1
 
-class KursteilnehmerSerializer(serializers.ModelSerializer):
+# Der Serializer für die Klasse Student
+class StudentSerializer(serializers.ModelSerializer):
     class Meta:
-        model: Kursteilnehmer
-        fields = ['first_name', 'last_name', 'email']
+        model = Student
+        fields = '__all__'
         depth = 1
 
-class KursSerializer(serializers.ModelSerializer):
+# Der Serializer für die Klasse Course
+class CourseSerializer(serializers.ModelSerializer):
+    course_kt = serializers.PrimaryKeyRelatedField(queryset=Student.objects.all(), source='course_student', write_only=True, many=True, label='Student')
+    provider_pk = serializers.PrimaryKeyRelatedField(queryset=Provider.objects.all(), source='provider_fk', write_only=True, label='Provider')
+    teacher_pk = serializers.PrimaryKeyRelatedField(queryset=Teacher.objects.all(), source='teacher_fk', write_only=True, label='Teacher')
+
     class Meta:
-        model: Kurs
-        fields = ['beschreibung', 'date']
+        model = Course
+        fields = '__all__'
         depth = 1
 
-
+# Für diesen Serializer ist kein model erstellt worden. Hier wird von Django der User bereitgestellt, der importiert werden muss.
+# Der User muss sich authentifizieren, um die Kurse, Kursteilnehmer etc. erstellen zu können.
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'email', 'password', 'first_name', 'last_name')
+        extra_kwargs = {'password': {'write_only': True}, 'id': {'read_only': True},
+                         'email': {'required': True},
+                         'first_name': {'required': True}, 'last_name': {'required': True}}
