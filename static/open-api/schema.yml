@@ -1,0 +1,1375 @@
+openapi: 3.0.3
+info:
+  title: ''
+  version: 0.0.0
+paths:
+  /api/api-token-auth/:
+    post:
+      operationId: api_api_token_auth_create
+      description: ''
+      tags:
+      - api
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthToken'
+          description: ''
+  /api/course/:
+    get:
+      operationId: api_course_list
+      description: ''
+      tags:
+      - Course
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Course'
+          description: ''
+    post:
+      operationId: api_course_create
+      description: ''
+      tags:
+      - Course
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Course'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Course'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Course'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Course'
+          description: ''
+  /api/course/{id}/:
+    get:
+      operationId: api_course_retrieve
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this course.
+        required: true
+      tags:
+      - Course
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Course'
+          description: ''
+    put:
+      operationId: api_course_update
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this course.
+        required: true
+      tags:
+      - Course
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Course'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Course'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Course'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Course'
+          description: ''
+    patch:
+      operationId: api_course_partial_update
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this course.
+        required: true
+      tags:
+      - Course
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCourse'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCourse'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCourse'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Course'
+          description: ''
+    delete:
+      operationId: api_course_destroy
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this course.
+        required: true
+      tags:
+      - Course
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/place/:
+    get:
+      operationId: api_place_list
+      description: ''
+      tags:
+      - Place
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Place'
+          description: ''
+    post:
+      operationId: api_place_create
+      description: ''
+      tags:
+      - Place
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Place'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Place'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Place'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Place'
+          description: ''
+  /api/place/{id}/:
+    get:
+      operationId: api_place_retrieve
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this place.
+        required: true
+      tags:
+      - Place
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Place'
+          description: ''
+    put:
+      operationId: api_place_update
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this place.
+        required: true
+      tags:
+      - Place
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Place'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Place'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Place'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Place'
+          description: ''
+    patch:
+      operationId: api_place_partial_update
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this place.
+        required: true
+      tags:
+      - Place
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPlace'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPlace'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPlace'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Place'
+          description: ''
+    delete:
+      operationId: api_place_destroy
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this place.
+        required: true
+      tags:
+      - Place
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/provider/:
+    get:
+      operationId: api_provider_list
+      description: ''
+      tags:
+      - Provider
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Provider'
+          description: ''
+    post:
+      operationId: api_provider_create
+      description: ''
+      tags:
+      - Provider
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Provider'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Provider'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Provider'
+          description: ''
+  /api/provider/{id}/:
+    get:
+      operationId: api_provider_retrieve
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this provider.
+        required: true
+      tags:
+      - Provider
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Provider'
+          description: ''
+    put:
+      operationId: api_provider_update
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this provider.
+        required: true
+      tags:
+      - Provider
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Provider'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Provider'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Provider'
+          description: ''
+    patch:
+      operationId: api_provider_partial_update
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this provider.
+        required: true
+      tags:
+      - Provider
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedProvider'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedProvider'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedProvider'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Provider'
+          description: ''
+    delete:
+      operationId: api_provider_destroy
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this provider.
+        required: true
+      tags:
+      - Provider
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/schema/:
+    get:
+      operationId: api_schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/student/:
+    get:
+      operationId: api_student_list
+      description: ''
+      tags:
+      - Student
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Student'
+          description: ''
+    post:
+      operationId: api_student_create
+      description: ''
+      tags:
+      - Student
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Student'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Student'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+          description: ''
+  /api/student/{id}/:
+    get:
+      operationId: api_student_retrieve
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this student.
+        required: true
+      tags:
+      - Student
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+          description: ''
+    put:
+      operationId: api_student_update
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this student.
+        required: true
+      tags:
+      - Student
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Student'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Student'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+          description: ''
+    patch:
+      operationId: api_student_partial_update
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this student.
+        required: true
+      tags:
+      - Student
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedStudent'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedStudent'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedStudent'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+          description: ''
+    delete:
+      operationId: api_student_destroy
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this student.
+        required: true
+      tags:
+      - Student
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/teacher/:
+    get:
+      operationId: api_teacher_list
+      description: ''
+      tags:
+      - Teacher
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Teacher'
+          description: ''
+    post:
+      operationId: api_teacher_create
+      description: ''
+      tags:
+      - Teacher
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Teacher'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Teacher'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Teacher'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Teacher'
+          description: ''
+  /api/teacher/{id}/:
+    get:
+      operationId: api_teacher_retrieve
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this teacher.
+        required: true
+      tags:
+      - Teacher
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Teacher'
+          description: ''
+    put:
+      operationId: api_teacher_update
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this teacher.
+        required: true
+      tags:
+      - Teacher
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Teacher'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Teacher'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Teacher'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Teacher'
+          description: ''
+    patch:
+      operationId: api_teacher_partial_update
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this teacher.
+        required: true
+      tags:
+      - Teacher
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTeacher'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTeacher'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTeacher'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Teacher'
+          description: ''
+    delete:
+      operationId: api_teacher_destroy
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this teacher.
+        required: true
+      tags:
+      - Teacher
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/users/:
+    get:
+      operationId: api_users_list
+      description: ''
+      tags:
+      - User
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+          description: ''
+    post:
+      operationId: api_users_create
+      description: ''
+      tags:
+      - User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/users/{id}/:
+    get:
+      operationId: api_users_retrieve
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - User
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: api_users_update
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: api_users_partial_update
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    delete:
+      operationId: api_users_destroy
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - User
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    AuthToken:
+      type: object
+      properties:
+        username:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+        token:
+          type: string
+          readOnly: true
+      required:
+      - password
+      - token
+      - username
+    Course:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        course_kt:
+          type: array
+          items:
+            type: integer
+            writeOnly: true
+          writeOnly: true
+        provider_pk:
+          type: integer
+          writeOnly: true
+        teacher_pk:
+          type: integer
+          writeOnly: true
+        beschreibung:
+          type: string
+          maxLength: 1024
+        provider_fk:
+          allOf:
+          - $ref: '#/components/schemas/Nested'
+          readOnly: true
+        teacher_fk:
+          allOf:
+          - $ref: '#/components/schemas/Nested'
+          readOnly: true
+        course_student:
+          type: array
+          items:
+            $ref: '#/components/schemas/Nested'
+          readOnly: true
+      required:
+      - beschreibung
+      - course_kt
+      - course_student
+      - id
+      - provider_fk
+      - provider_pk
+      - teacher_fk
+      - teacher_pk
+    Nested:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 512
+        place_fk:
+          type: integer
+      required:
+      - id
+      - name
+      - place_fk
+    PatchedCourse:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        course_kt:
+          type: array
+          items:
+            type: integer
+            writeOnly: true
+          writeOnly: true
+        provider_pk:
+          type: integer
+          writeOnly: true
+        teacher_pk:
+          type: integer
+          writeOnly: true
+        beschreibung:
+          type: string
+          maxLength: 1024
+        provider_fk:
+          allOf:
+          - $ref: '#/components/schemas/Nested'
+          readOnly: true
+        teacher_fk:
+          allOf:
+          - $ref: '#/components/schemas/Nested'
+          readOnly: true
+        course_student:
+          type: array
+          items:
+            $ref: '#/components/schemas/Nested'
+          readOnly: true
+    PatchedPlace:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        plz:
+          type: string
+          maxLength: 4
+        ortsname:
+          type: string
+          maxLength: 512
+    PatchedProvider:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        place_pk:
+          type: integer
+          writeOnly: true
+        name:
+          type: string
+          maxLength: 512
+        place_fk:
+          allOf:
+          - $ref: '#/components/schemas/Nested'
+          readOnly: true
+    PatchedStudent:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 255
+        last_name:
+          type: string
+          maxLength: 255
+        email:
+          type: string
+          maxLength: 512
+    PatchedTeacher:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 255
+        last_name:
+          type: string
+          maxLength: 255
+        email:
+          type: string
+          maxLength: 512
+    PatchedUser:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 128
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+    Place:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        plz:
+          type: string
+          maxLength: 4
+        ortsname:
+          type: string
+          maxLength: 512
+      required:
+      - id
+      - ortsname
+      - plz
+    Provider:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        place_pk:
+          type: integer
+          writeOnly: true
+        name:
+          type: string
+          maxLength: 512
+        place_fk:
+          allOf:
+          - $ref: '#/components/schemas/Nested'
+          readOnly: true
+      required:
+      - id
+      - name
+      - place_fk
+      - place_pk
+    Student:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 255
+        last_name:
+          type: string
+          maxLength: 255
+        email:
+          type: string
+          maxLength: 512
+      required:
+      - email
+      - first_name
+      - id
+      - last_name
+    Teacher:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 255
+        last_name:
+          type: string
+          maxLength: 255
+        email:
+          type: string
+          maxLength: 512
+      required:
+      - email
+      - first_name
+      - id
+      - last_name
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 128
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+      required:
+      - email
+      - first_name
+      - id
+      - last_name
+      - password
+      - username
+  securitySchemes:
+    tokenAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Bearer

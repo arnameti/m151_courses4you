@@ -139,7 +139,7 @@ STATICFILES_DIRS = [
 #MEDIA_URL = '/media/'
 
 
-#DRF Settings
+# #DRF Settings
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'api.bearer_token_auth.BearerTokenAuthentication',
