@@ -27,12 +27,12 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='place',
-            name='plz',
+            name='postcode',
             field=models.CharField(max_length=4, unique=True),
         ),
         migrations.AlterField(
             model_name='course',
-            name='beschreibung',
+            name='name',
             field=models.CharField(max_length=1024, unique=True),
         ),
         migrations.AlterField(

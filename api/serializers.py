@@ -1,3 +1,4 @@
+from django.http import Http404
 from rest_framework import serializers
 from api.models import Place, Provider, Teacher, Student, Course
 from django.contrib.auth.models import User

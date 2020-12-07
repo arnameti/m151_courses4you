@@ -23,8 +23,8 @@ class Migration(migrations.Migration):
             name='Place',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('plz', models.CharField(max_length=4)),
-                ('ortsname', models.CharField(max_length=512)),
+                ('postcode', models.CharField(max_length=4)),
+                ('place_name', models.CharField(max_length=512)),
             ],
         ),
         migrations.CreateModel(
@@ -50,7 +50,7 @@ class Migration(migrations.Migration):
             name='Course',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('beschreibung', models.CharField(max_length=1024)),
+                ('name', models.CharField(max_length=1024)),
                 ('provider_fk', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.provider')),
                 ('course_student', models.ManyToManyField(related_name='course_student', to='api.Student')),
                 ('teacher_fk', models.ForeignKey(on_delete=django.db.models.deletion.RESTRICT, to='api.teacher')),

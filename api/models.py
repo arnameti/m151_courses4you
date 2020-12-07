@@ -5,13 +5,18 @@ from django.db import models
 
 # In der Datei models.py werden nun die Klassen erstellt. Das werden dann die Tabellen sein.
 # D.h man kann Tablllen erstellen ohne eine Zeile sql-Code zu schreiben.
-# Der Ort wird erstellt. Bei plz ist unique auf Ture, damit nicht der selbe Ort zwei Mal erstellt werden kann.
+# Der Ort wird erstellt. Bei postcode ist unique auf Ture, damit nicht der selbe Ort zwei Mal erstellt werden kann.
+from django.http import Http404
+
+
 class Place (models.Model):
-    plz = models.CharField(null=False, max_length=4, unique=True)
-    ortsname = models.CharField(null=False, max_length=512)
+    postcode = models.CharField(null=False, max_length=4, unique=True)
+    place_name = models.CharField(null=False, max_length=255)
 
     def __str__(self):
-        return '{} {}'.format(self.plz, self.ortsname)
+        return '{} {}'.format(self.postcode, self.place_name)
+
+
 
 # Der Anbieter wird erstellt. Ein ForeignKey zeigt auf die Tabelle Place. Ein Anbieter kann nur eine Anchrift haben,
 # eine Anschrift kann aber 0, 1 oder mehrere verschiedene Anbieter haben.
@@ -50,12 +55,11 @@ class Student (models.Model):
 # mit unique=True bei dem Attribut email wird sichergestellt, dass es einen bestimmten Kurs nur einmal gibt,
 # da Courses4You einen bestimmten Kurs nur an einem bestimmten Ort anbietet.
 class Course (models.Model):
-    beschreibung = models.CharField(null=False, max_length=1024, unique=True)
-    date = models.DateField
+    name = models.CharField(null=False, max_length=1024, unique=True)
 
     provider_fk = models.ForeignKey(Provider, null=False, on_delete=models.CASCADE)
     teacher_fk = models.ForeignKey(Teacher, null=False, on_delete=models.RESTRICT)
     course_student = models.ManyToManyField(Student, related_name='course_student')
 
     def __str__(self):
-        return '{}'.format(self.beschreibung, self.date)
+        return '{}'.format(self.name, self.date)
