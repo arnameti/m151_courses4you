@@ -10,11 +10,11 @@ Es generiert automatisch die URLs und mappt die einzelnen endpoints zu den einze
 basirend auf den http-Typ (get, post, ...)
 """
 routers = routers.DefaultRouter()
-routers.register(r'provider', api_views.ProviderViewSet)
-routers.register(r'place', api_views.PlaceViewSet)
-routers.register(r'teacher', api_views.TeacherViewSet)
-routers.register(r'student', api_views.StudentViewSet)
-routers.register(r'course', api_views.CourseViewSet)
+routers.register(r'providers', api_views.ProviderViewSet)
+routers.register(r'places', api_views.PlaceViewSet)
+routers.register(r'teachers', api_views.TeacherViewSet)
+routers.register(r'students', api_views.StudentViewSet)
+routers.register(r'courses', api_views.CourseViewSet)
 routers.register(r'users', api_views.UserViewSet)
 
 urlpatterns = [
