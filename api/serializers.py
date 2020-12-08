@@ -2,6 +2,8 @@ from django.http import Http404
 from rest_framework import serializers
 from api.models import Place, Provider, Teacher, Student, Course
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+from django.contrib.auth import password_validation
 
 
 # Hier werden alle Serializers erstellt. Dazu müssen die Models (also die Klassen), die in der Datei models.py erstellt wurden, importiert werden.
@@ -54,3 +56,21 @@ class UserSerializer(serializers.ModelSerializer):
         extra_kwargs = {'password': {'write_only': True}, 'id': {'read_only': True},
                          'email': {'required': True},
                          'first_name': {'required': True}, 'last_name': {'required': True}}
+
+        def create(self, validated_data):
+            password = validated_data.pop('password', None)
+            try:
+                if User.objects.filter(email=validated_data.get('email')).exists():
+                    raise serializers.ValidationError('Email already registered.')
+                password_validation.validate_password(password)
+            except ValidationError as ve:
+                raise serializers.ValidationError({'Password-Errors': [i for i in ve.messages]})
+            user = User(**validated_data)
+            user.set_password(password)
+            user.save()
+            return user
+
+        def update(self, instance, validated_data):
+            if User.objects.filter(email=validated_data.get('email')).exists():
+                raise serializers.ValidationError('Email already registered.')
+            return super(UserSerializer, self).update(instance, validated_data)
