@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn library.wsgi
+web: gunicorn courses4you.wsgi
