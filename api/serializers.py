@@ -27,9 +27,6 @@ class ProviderSerializer(serializers.ModelSerializer):
 
 # Der Serializer für die Klasse Teacher.
 class TeacherSerializer(serializers.ModelSerializer):
-    email_pk = serializers.PrimaryKeyRelatedField(queryset=Place.objects.all(), source='email_fk', write_only=True,
-                                                  label='Email')
-
     class Meta:
         model = Teacher
         fields = '__all__'
